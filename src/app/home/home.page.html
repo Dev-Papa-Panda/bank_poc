@@ -21,13 +21,13 @@
   <div >
     <!-- <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-{{ibanGermany | ibanFormatter}}
+
     <ion-list>
       <ion-item>
-        <ion-col size="2">
+        <ion-col size="3">
           <small>Account<br>holder</small>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="3">
           <small>IBAN</small>
         </ion-col>
         <ion-col size="2">
@@ -36,19 +36,19 @@
         <ion-col size="2">
           <small>Amount</small>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="2">
           <small>Note</small>
         </ion-col>
       </ion-item>
       
       <ion-item *ngFor="let item of details; let i = index;" (click)="edit_detail(i, item)">
-        <ion-col size="2">
+        <ion-col size="3">
           <!-- <div>2 of 4</div> -->
           <div>{{item.account_holder}}</div>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="3">
           <!-- <div>3 of 4</div> -->
-          <div>{{item.ibanReactive}}</div>
+          <div>{{item.ibanReactive  | ibanFormatter}}</div>
         </ion-col>
         <ion-col size="2">
           <!-- <div>4 of 4</div> -->
@@ -56,9 +56,9 @@
         </ion-col>
         <ion-col size="2">
           <!-- <div>4 of 4</div> -->
-          <div>{{item.amount}}</div>
+          <div>{{item.amount | number}}</div>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="2">
           <!-- <div>4 of 4</div> -->
           <div>{{item.note}}</div>
         </ion-col>
