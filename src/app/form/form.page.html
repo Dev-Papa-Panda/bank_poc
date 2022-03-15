@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Form
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div >
+    <!-- <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+
+    <form  [formGroup]="form"  (ngSubmit)="submitHandler()">
+
+      <ion-item>
+        <ion-label for="exampleInputEmail2">Name</ion-label>
+        <ion-input type="text" id="exampleInputEmail2"  formControlName="account_holder" value="{{details.account_holder}}" ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label for="exampleInputEmail2">IBAN</ion-label>
+        <ion-input type="text" id="exampleInputEmail2" name="ibanReactive" formControlName="ibanReactive" value="{{details.ibanReactive | ibanFormatter}}" ></ion-input>
+        <div *ngIf="ibanReactive.invalid && (ibanReactive.dirty || ibanReactive.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="ibanReactive.errors?.['required']">
+          IBAN is required.
+        </div>
+        <div *ngIf="ibanReactive.errors?.['iban']">
+          IBAN is invalid
+        </div>
+
+      </div>
+      <div *ngIf="ibanReactive.valid && (ibanReactive.dirty || ibanReactive.touched)"
+           class="alert alert-danger">
+        IBAN is valid.
+      </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="exampleInputEmail2">Date</ion-label>
+        <ion-datetime hour-cycle="h12" presentation="date" locale="en-GB" formControlName="date" value="{{details.date}}" ></ion-datetime>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label for="exampleInputEmail2">Amount</ion-label>
+        <ion-input type="text" id="exampleInputEmail2"  formControlName="amount" value="{{details.amount}}" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description: </ion-label>
+        <ion-textarea type="text"    formControlName="note" placeholder="Enter Note"  style="height: 100px;width: auto;" value="{{details.note}}"></ion-textarea>
+      </ion-item>
+      
+
+      
+      
+      <ion-button type="submit" expand="block"   [disabled]="form.invalid">Submit</ion-button>
+                  
+              
+    </form>
+
+  </div>
+</ion-content>

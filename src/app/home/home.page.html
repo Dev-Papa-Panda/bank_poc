@@ -3,6 +3,11 @@
     <ion-title>
       Blank
     </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="presentModal()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +18,48 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div >
+    <!-- <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+{{ibanGermany | ibanFormatter}}
+    <ion-list>
+      <ion-item>
+        <ion-col size="3">
+          <small>Account<br>holder</small>
+        </ion-col>
+        <ion-col size="2">
+          <small>IBAN</small>
+        </ion-col>
+        <ion-col size="2">
+          <small>Date</small>
+        </ion-col>
+        <ion-col size="2">
+          <small>Amount</small>
+        </ion-col>
+        <ion-col size="3">
+          <small>Note</small>
+        </ion-col>
+      </ion-item>
+      
+      <ion-item>
+        <ion-col size="2">
+          <div>2 of 4</div>
+        </ion-col>
+        <ion-col size="2">
+          <div>3 of 4</div>
+        </ion-col>
+        <ion-col size="2">
+          <div>4 of 4</div>
+        </ion-col>
+        <ion-col size="2">
+          <div>4 of 4</div>
+        </ion-col>
+        <ion-col size="4">
+          <div>4 of 4</div>
+        </ion-col>
+      </ion-item>
+      
+    </ion-list>
+
   </div>
 </ion-content>
