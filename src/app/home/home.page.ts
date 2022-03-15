@@ -18,7 +18,7 @@ export class HomePage {
     public modalController: ModalController
   ) {
     console.log(JSON.parse( localStorage.getItem('transactions')));
-    this.details=JSON.parse( localStorage.getItem('transactions'))
+    this.details=JSON.parse( localStorage.getItem('transactions'));
   }
 
   async presentModal() {
@@ -29,6 +29,11 @@ export class HomePage {
         if_edit: false
       }
     });
+
+    modal.onDidDismiss().then(response => {
+      console.log(JSON.parse( localStorage.getItem('transactions')));
+      this.details=JSON.parse( localStorage.getItem('transactions'));
+    })
     return await modal.present();
   }
 
