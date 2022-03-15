@@ -24,7 +24,23 @@ export class HomePage {
   async presentModal() {
     const modal = await this.modalController.create({
       component: FormPage,
-      cssClass: 'my-custom-class'
+      cssClass: 'my-custom-class',
+      componentProps: {
+        if_edit: false
+      }
+    });
+    return await modal.present();
+  }
+
+  async edit_detail(index, item) {
+    const modal = await this.modalController.create({
+      component: FormPage,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        if_edit: true,
+        edit_id: index,
+        edit_item: item,
+      }
     });
     return await modal.present();
   }
