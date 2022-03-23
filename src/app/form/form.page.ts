@@ -112,6 +112,7 @@ var yyyy = today.getFullYear();
         if(transcation==null){
           transcation=[];
         }
+        formValue['id'] = transcation.length + 1;
         transcation.push(formValue);
         localStorage.setItem('transactions', JSON.stringify(transcation));
         this.dismiss();
@@ -126,7 +127,8 @@ var yyyy = today.getFullYear();
       transcation=[];
     }
     // transcation.push(formValue);
-    transcation[this.edit_id]=formValue;
+    formValue['id'] = this.edit_id;
+    transcation[this.edit_id - 1]=formValue;
     localStorage.setItem('transactions', JSON.stringify(transcation));
     this.dismiss();
   }

@@ -19,6 +19,7 @@ export class HomePage {
 
   dummy_storage = [
     {
+      id : 1,
       account_holder: "rr",
       amount: 1234,
       date: "2022-03-17",
@@ -34,6 +35,7 @@ export class HomePage {
     this.details=JSON.parse( localStorage.getItem('transactions'));
     if (localStorage.getItem('transactions') == undefined || localStorage.getItem('transactions') == null) {
       localStorage.setItem('transactions', JSON.stringify(this.dummy_storage));
+    this.details=JSON.parse( localStorage.getItem('transactions'));
      }
     this.details_container=JSON.parse( localStorage.getItem('transactions'));
   }
@@ -92,6 +94,11 @@ export class HomePage {
         edit_item: item,
       }
     });
+
+    modal.onDidDismiss().then(response => {
+      console.log(JSON.parse( localStorage.getItem('transactions')));
+      this.details=JSON.parse( localStorage.getItem('transactions'));
+    })
     return await modal.present();
   }
 
@@ -129,6 +136,21 @@ export class HomePage {
     else {
       this.show_search = true;
     }
+  }
+
+  async delete_detail(index, item) {
+    let transcation=JSON.parse( localStorage.getItem('transactions'));
+    if(transcation==null){
+      transcation=[];
+    }
+    // transcation.push(formValue);
+    // formValue['id'] = this.edit_id;
+    // transcation[index - 1]=formValue;
+    index = index - 1;
+    transcation.splice(index, 1);
+    localStorage.setItem('transactions', JSON.stringify(transcation));
+
+    this.details = transcation;
   }
 
 }

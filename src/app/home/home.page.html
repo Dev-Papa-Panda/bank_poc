@@ -69,12 +69,15 @@
         <ion-col size="2" (click)="sort_by_amount()">
           <small>Amount</small>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="2">
           <small>Note</small>
+        </ion-col>
+        <ion-col size="2">
+          <small></small>
         </ion-col>
       </ion-item>
       
-      <ion-item *ngFor="let item of details; let i = index;" (click)="edit_detail(i, item)">
+      <ion-item *ngFor="let item of details; let i = index;">
         <ion-col size="2">
           <!-- <div>2 of 4</div> -->
           <div>{{item.account_holder}}</div>
@@ -91,9 +94,25 @@
           <!-- <div>4 of 4</div> -->
           <div>{{item.amount}}</div>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="2">
           <!-- <div>4 of 4</div> -->
           <div>{{item.note}}</div>
+        </ion-col>
+        <ion-col size="2">
+          <ion-row>
+            <ion-col>
+              <div (click)="edit_detail(item.id, item)">
+                <ion-icon slot="start" name="create-outline"></ion-icon>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div (click)="delete_detail(item.id, item)">
+                <ion-icon slot="start" name="trash-outline"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+
+
         </ion-col>
       </ion-item>
       
