@@ -13,12 +13,29 @@ export class HomePage {
 
   public ibanGermany = 'DE12500105170648489890'
   details: any;
+  search_text: any;
+  details_container: any;
+  show_search = false;
+
+  dummy_storage = [
+    {
+      account_holder: "rr",
+      amount: 1234,
+      date: "2022-03-17",
+      ibanReactive: "DE12500105170648489890",
+      note: "ss",
+    }
+  ];
 
   constructor(
     public modalController: ModalController
   ) {
     console.log(JSON.parse( localStorage.getItem('transactions')));
     this.details=JSON.parse( localStorage.getItem('transactions'));
+    if (localStorage.getItem('transactions') == undefined || localStorage.getItem('transactions') == null) {
+      localStorage.setItem('transactions', JSON.stringify(this.dummy_storage));
+    }
+    this.details_container=JSON.parse( localStorage.getItem('transactions'));
   }
 
   sort_by_amount() {
@@ -76,6 +93,42 @@ export class HomePage {
       }
     });
     return await modal.present();
+  }
+
+  set_val_for_search(val) {
+    this.search_text = val;
+    console.log(this.search_text);
+  }
+
+  cancel_search() {
+    this.details = this.details_container;
+  }
+
+  search_account_holder() {
+    let container = this.details_container;
+    const that = this;
+    this.details = container.filter(function(el) {
+      // @ts-ignore
+        return el.account_holder.toLowerCase().indexOf(that.search_text.toLowerCase()) !== -1
+      });
+  }
+
+  search_note() {
+    let container = this.details_container;
+    const that = this;
+    this.details = container.filter(function(el) {
+      // @ts-ignore
+        return el.note.toLowerCase().indexOf(that.search_text.toLowerCase()) !== -1
+      });
+  }
+
+  show_hide_search() {
+    if (this.show_search) {
+      this.show_search = false;
+    }
+    else {
+      this.show_search = true;
+    }
   }
 
 }

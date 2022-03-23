@@ -241,7 +241,15 @@ num=parseInt(num,10);
     // this.form.setValue({
     //   amount: num
     // })
-    this.form.controls['amount'].setValue(num1);
+    if (num1.toString() === 'NaN') {
+    this.form.controls['amount'].setValue('');
+    }
+    else {
+      this.form.controls['amount'].setValue(num1);
+    }
+    if (num1.toString().length >= 12) {
+    this.form.controls['amount'].setValue('');
+    }
   }
 }
 

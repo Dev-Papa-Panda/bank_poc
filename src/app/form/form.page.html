@@ -57,7 +57,7 @@
       <ion-item>
         <ion-label for="exampleInputEmail2">Amount</ion-label>
         <!-- <ion-input type="number" step="0.01" id="exampleInputEmail2"  formControlName="amount" value="{{details.amount}}" ></ion-input> -->
-        <ion-input type="text" maxlength="10" minlength="2" id="exampleInputEmail2"  formControlName="amount" value="{{display_amount}}" (keyup)="auto_format($event.target.value)"></ion-input>
+        <ion-input type="text" minlength="2" id="exampleInputEmail2"  formControlName="amount" value="{{display_amount}}" (keyup)="auto_format($event.target.value)"></ion-input>
       </ion-item>
 
       <ion-item>
