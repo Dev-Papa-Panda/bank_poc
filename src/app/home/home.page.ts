@@ -34,7 +34,7 @@ export class HomePage {
     this.details=JSON.parse( localStorage.getItem('transactions'));
     if (localStorage.getItem('transactions') == undefined || localStorage.getItem('transactions') == null) {
       localStorage.setItem('transactions', JSON.stringify(this.dummy_storage));
-    }
+     }
     this.details_container=JSON.parse( localStorage.getItem('transactions'));
   }
 
