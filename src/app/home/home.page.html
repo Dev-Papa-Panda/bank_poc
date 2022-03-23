@@ -24,16 +24,16 @@
 {{ibanGermany | ibanFormatter}}
     <ion-list>
       <ion-item>
-        <ion-col size="2">
+        <ion-col size="2" >
           <small>Account<br>holder</small>
         </ion-col>
         <ion-col size="2">
           <small>IBAN</small>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="2" (click)="sort_by_date()">
           <small>Date</small>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="2" (click)="sort_by_amount()">
           <small>Amount</small>
         </ion-col>
         <ion-col size="4">

@@ -21,6 +21,34 @@ export class HomePage {
     this.details=JSON.parse( localStorage.getItem('transactions'));
   }
 
+  sort_by_amount() {
+    function compare( a, b ) {
+      if ( a.amount < b.amount ){
+        return -1;
+      }
+      if ( a.amount > b.amount ){
+        return 1;
+      }
+      return 0;
+    }
+    
+    this.details.sort( compare );
+  }
+
+  sort_by_date() {
+    function compare( a, b ) {
+      if ( a.date < b.date ){
+        return -1;
+      }
+      if ( a.date > b.date ){
+        return 1;
+      }
+      return 0;
+    }
+    
+    this.details.sort( compare );
+  }
+
   async presentModal() {
     const modal = await this.modalController.create({
       component: FormPage,

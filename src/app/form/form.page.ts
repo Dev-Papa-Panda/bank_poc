@@ -44,11 +44,30 @@ export class FormPage implements OnInit {
           ValidatorService.validateIban
         ]
     );
+        let date_year = new Date().getFullYear()
+        let date_month = new Date().getMonth();
+        // @ts-ignore
+        date_month = parseInt(date_month) +1;
+        // @ts-ignore
+        date_month = date_month.toFixed(2);
+        let date_day = new Date().getDate();
+                // @ts-ignore
+                date_day = parseInt(date_day);
+                // @ts-ignore
+                date_day = date_day.toFixed(2);
 
+
+                var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+        let date_str = yyyy +  '-' + mm + '-' + dd
+        console.log(date_str);
     this.form = this.formBuilder.group({
       account_holder: ['', Validators.required],
       ibanReactive: this.ibanReactive,
-      date:['', Validators.required],
+      date:[date_str, Validators.required],
       amount:['', Validators.required],
       note:['', Validators.required],
           
