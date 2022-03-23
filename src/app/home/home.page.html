@@ -15,9 +15,42 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
+      <ion-button slot="end" size="small" (click)="show_hide_search()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
     </ion-toolbar>
   </ion-header>
 
+  <ion-row *ngIf="show_search">
+    <ion-col size="8">
+      <ion-searchbar placeholder="Search here" inputmode="text" type="text" (ionChange)="set_val_for_search($event.target.value)" [debounce]="250" showCancelButton="always" (ionCancel)="cancel_search()"></ion-searchbar>
+    </ion-col>
+    <ion-col size="4">
+      <ion-radio-group>
+      <ion-item  style="height: 31%;font-size: 0.9rem;" (click)="search_account_holder()" lines="none">
+        <ion-label>Acc </ion-label>
+        <ion-radio></ion-radio>
+      </ion-item>
+      <ion-item  style="height: 31%;font-size: 0.9rem;" (click)="search_note()" lines="none">
+        <ion-label>Note</ion-label>
+        <ion-radio></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row>
+    <ion-col size="6">
+      <ion-button color="primary" (click)="search_account_holder()" expand="block" fill="default" shape="round">
+        Account Holder
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button color="primary" (click)="search_note()" expand="block" fill="default" shape="round">
+        Note
+      </ion-button>
+    </ion-col>
+  </ion-row> -->
   <div >
     <!-- <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
@@ -30,10 +63,10 @@
         <ion-col size="3">
           <small>IBAN</small>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="2" (click)="sort_by_date()">
           <small>Date</small>
         </ion-col>
-        <ion-col size="2">
+        <ion-col size="2" (click)="sort_by_amount()">
           <small>Amount</small>
         </ion-col>
         <ion-col size="2">
